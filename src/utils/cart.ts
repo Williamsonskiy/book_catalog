@@ -24,19 +24,18 @@ export const getCart = (): CartItem[] => {
 export const addToCart = (book: Book, quantity: number = 1): void => {
   setCart((prev) => {
     const existingItem = prev.find(item => item.book.id === book.id);
-
+    
     if (existingItem) {
-      return prev.map(item =>
-        item.book.id === book.id
-          ? { ...item, qty: item.qty + quantity }
-          : item
-      );
-    } else {
-      return [...prev, { book, qty: quantity }];
+      const updatedItems = prev.map((item) => {
+        if (item.book.id === book.id) {
+          return { ...item, qty: item.qty + quantity };
+        }
+        return item;
+      });
+      return updatedItems;
     }
+    
+    const newItem: CartItem = { book, qty: quantity };
+    return [...prev, newItem];
   });
-};
-
-export const removeFromCart = (bookId: number): void => {
-  setCart((prev) => prev.filter(item => item.book.id !== bookId));
 };
