@@ -39,3 +39,7 @@ export const addToCart = (book: Book, quantity: number = 1): void => {
     return [...prev, newItem];
   });
 };
+
+export const removeFromCart = (bookId: number): void => {
+  setCart((prev) => prev.filter(item => item.book.id !== bookId));
+};
