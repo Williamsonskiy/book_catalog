@@ -6,11 +6,11 @@ import { CartPage } from "../pages/Cart"
 
 const Layout = () => {
   return <>
-      <header className="p-4 flex justify-between">
-        <a href="/" className="text-2xl">Новый каталог книг</a>
+      <header className="p-4 flex justify-between bg-white shadow-md">
+        <a href="/" className="text-2xl font-bold text-blue-600 hover:text-blue-800">Новый каталог книг</a>
         <a href="/cart" className="underline">Корзина</a>
       </header>
-      <main className="m-auto mt-2 w-4xl px-4">
+      <main className="m-auto mt-2 w-4xl px-4 bg-gray-50 min-h-screen">
         <Outlet />
       </main>
     </>
